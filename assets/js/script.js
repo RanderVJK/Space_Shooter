@@ -1,5 +1,10 @@
 const yourShip = document.querySelector('.player-shooter')
 const playArea = document.querySelector('#main-play-area')
+const aliensImg = [
+  'assets/img/monster-1.png',
+  'assets/img/monster-2.png',
+  'assets/img/monster-3.png'
+]
 
 // Movimento e tiro da nave
 function flyShip(event) {
@@ -72,6 +77,36 @@ function moveLaser(laser) {
   }, 10)
 }
 
-window.addEventListener('keydown', flyShip)
+// Função para criar inimigos aleatórios
+function createAliens() {
+  let newAlien = document.createElement('img')
+  let alienSprite = aliensImg[Math.floor(Math.random() * aliensImg.length)] //sorteio de imagens, aliens
+  newAlien.src = alienSprite
+  newAlien.classList.add('alien')
+  newAlien.classList.add('alien-transition')
+  newAlien.style.left = '370px'
+  newAlien.style.top = `${Math.floor(Math.random() * 330) + 30}px`
+  playArea.appendChild(newAlien)
+  moveAlien(newAlien)
+}
 
-// Parei na aula 5
+// Função para movimentar os inimigos
+
+function moveAlien(alien) {
+  let moveAlienInterval = setInterval(() => {
+    let xPosition = parseInt(
+      window.getComputedStyle(alien).getPropertyValue('left')
+    )
+    if (xPosition <= 50) {
+      if (Array.from(alien.classList).includes('dead-alien')) {
+        alien.remove()
+      } else {
+        gameOver()
+      }
+    } else {
+      alien.style.left = `${xPosition - 4}px`
+    }
+  }, 30)
+}
+
+window.addEventListener('keydown', flyShip)
