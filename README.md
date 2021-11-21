@@ -1,6 +1,6 @@
 
 # GAME Space Shooter #
-## Jogo de espaçonave que não pode deixar os Ovnis atacarem o planeta dele. <img src="./assets/img/shoot" width="30">
+## Jogo de espaçonave que não pode deixar os Ovnis atacarem o planeta dele. <img src="./assets/img/hero.png" width="30">
 <h1  align="center">
 <img src="https://ik.imagekit.io/vanderdev/space_oXrt0XJ-1.png?updatedAt=1636883823158"  />
 
